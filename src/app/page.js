@@ -58,11 +58,11 @@ const hooks = [
 export default function HomePage() {
     return (
         <main>
-            <h1>React Hooks – lekeplass</h1>
+            <h1>React Hooks</h1>
 
             <p>
-                Velg en hook for å se en kort forklaring og et lite, praktisk
-                eksempel. Perfekt for å øve, forklare videre – eller bare nerde.
+                Velg en hook for å se en kort forklaring og et lite praktisk
+                eksempel.
             </p>
 
             <div className='mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
