@@ -1,65 +1,90 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+import Link from "next/link";
+
+const hooks = [
+    {
+        href: "/hooks/use-state",
+        label: "useState",
+        description: "Lagrer verdier som kan endre seg over tid.",
+    },
+    {
+        href: "/hooks/use-effect",
+        label: "useEffect",
+        description: "Kjører kode som en reaksjon på endringer.",
+    },
+    {
+        href: "/hooks/use-ref",
+        label: "useRef",
+        description: "Holder på referanser uten å trigge re-render.",
+    },
+    {
+        href: "/hooks/use-context",
+        label: "useContext",
+        description: "Deler data globalt uten å sende props.",
+    },
+    {
+        href: "/hooks/use-reducer",
+        label: "useReducer",
+        description: "Mer strukturert state-håndtering (mini-Redux).",
+    },
+    {
+        href: "/hooks/use-memo",
+        label: "useMemo",
+        description: "Husker resultatet av tunge beregninger.",
+    },
+    {
+        href: "/hooks/use-callback",
+        label: "useCallback",
+        description: "Husker funksjoner mellom re-renders.",
+    },
+    {
+        href: "/hooks/use-layout-effect",
+        label: "useLayoutEffect",
+        description: "Som useEffect, men kjører synkront etter layout.",
+    },
+    {
+        href: "/hooks/use-imperative-handle",
+        label: "useImperativeHandle",
+        description: "Tilpasser hva refs eksponerer til foreldre.",
+    },
+    {
+        href: "/hooks/use-transition",
+        label: "useTransition",
+        description: "Markerer oppdateringer som mindre viktige.",
+    },
+];
+
+export default function HomePage() {
+    return (
+        <main>
+            <h1>React Hooks – lekeplass</h1>
+
+            <p>
+                Velg en hook for å se en kort forklaring og et lite, praktisk
+                eksempel. Perfekt for å øve, forklare videre – eller bare nerde.
+            </p>
+
+            <div className='mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
+                {hooks.map((hook) => (
+                    <Link key={hook.href} href={hook.href} className='block'>
+                        <div className='h-full demo-box bg-white hover:shadow-md transition flex flex-col justify-between w-full'>
+                            <div>
+                                <h2 className='text-base font-semibold mb-1 tracking-tight text-slate-900 wrap-break-word'>
+                                    {hook.label}
+                                </h2>
+                                <p className='text-sm text-slate-600 leading-snug'>
+                                    {hook.description}
+                                </p>
+                            </div>
+
+                            <span className='mt-4 text-xs text-blue-600 font-medium'>
+                                Åpne →
+                            </span>
+                        </div>
+                    </Link>
+                ))}
+            </div>
+        </main>
+    );
 }
